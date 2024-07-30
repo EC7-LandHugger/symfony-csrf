@@ -2,9 +2,9 @@
 {% block body %}
     <h1>Symfony CSRF Reproducer</h1>
 
-    <form action="{{ url('app_login') }}" method="post">
+    <form method="post">
         <h2>Sign in</h2>
-
+<p>You can submit the form without even filling the email and the password.</p>
         <div>
             <label for="email">Email</label>
             <input type="text" name="email" id="email"/>
@@ -19,8 +19,9 @@
         </p>
     </form>
 
+    <h2>Result</h2>
+
     {% if app.request.isMethod('POST') %}
-        <h2>Result</h2>
         <table border="3">
             <tr>
                 <td>
@@ -47,6 +48,8 @@
                 <td>{{ pollutedEnd }}</td>
             </tr>
         </table>
+        {% else %}
+<p>Submit the form to see the details.</p>
     {% endif %}
 
 {% endblock %}
