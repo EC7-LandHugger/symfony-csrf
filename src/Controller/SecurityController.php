@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\enum\Direction;
+use App\Enum\Direction;
 use App\Service\CsrfPolluter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

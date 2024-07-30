@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\enum\Direction;
+use App\Enum\Direction;
 
 class CsrfPolluter
 {
