@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Symfony CSRF Reproducer</h1>
+
+    <form action="{{ url('app_login') }}" method="post">
+        <h2>Sign in</h2>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email"/>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+        <p align="center">
+            <button type="submit">Sign in</button>
+        </p>
+    </form>
+
+    {% if app.request.isMethod('POST') %}
+        <h2>Result</h2>
+        <table border="3">
+            <tr>
+                <td>
+                    <strong>Submitted CSRF token:</strong>
+                </td>
+                <td>{{ submittedCsrfToken }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Polluted CSRF token:</strong>
+                </td>
+                <td>{{ pollutedCsrfToken }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Is polluted CSRF token valid:</strong>
+                </td>
+                <td>{{ isPollutedCsrfTokenValid ? "Yes" : "No" }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Polluted end:</strong>
+                </td>
+                <td>{{ pollutedEnd }}</td>
+            </tr>
+        </table>
+    {% endif %}
+
+{% endblock %}
